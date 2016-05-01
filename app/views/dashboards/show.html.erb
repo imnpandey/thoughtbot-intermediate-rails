@@ -3,6 +3,11 @@
   <%= form.submit 'Shout!' %>
 <% end %>
 
+<%= form_for @photo_shout do |form| %>
+  <%= form.file_field :image %>
+  <%= form.submit 'Shout!' %>
+<% end %>
+
 <% # whenever you do render on an array,
 # it loops throurh that array and for each object
 # its going to try to render a partial for it, here our obj is shout so its
