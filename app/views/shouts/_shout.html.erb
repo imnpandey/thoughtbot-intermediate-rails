@@ -2,7 +2,7 @@
   <%= link_to shout.user.username, shout.user %>
   shouted
   <div>
-    <%= shout.body %>
+    <%= render shout.content %>
     <%= link_to time_ago_in_words(shout.created_at), shout %>
   </div>
 <% end %>

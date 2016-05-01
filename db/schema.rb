@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501113416) do
+ActiveRecord::Schema.define(version: 20160501113523) do
 
   create_table "shouts", force: :cascade do |t|
-    t.string   "body"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "content_id"
+    t.string   "content_type"
   end
 
+  add_index "shouts", ["content_id", "content_type"], name: "index_shouts_on_content_id_and_content_type"
   add_index "shouts", ["user_id"], name: "index_shouts_on_user_id"
 
   create_table "text_shouts", force: :cascade do |t|
