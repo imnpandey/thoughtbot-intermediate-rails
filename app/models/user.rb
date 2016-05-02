@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Followable
+
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
   has_many :shouts
@@ -12,17 +14,4 @@ class User < ActiveRecord::Base
     foreign_key: :followed_user_id,
     class_name: 'FollowingRelationship'
   has_many :followers, through: :follower_relationships
-
-  def following? user
-    # followed_user_ids from has many relation
-    followed_user_ids.include? user.id
-  end
-
-  def follow user
-    followed_users << user
-  end
-
-  def unfollow user
-    followed_users.delete(user)
-  end
 end
